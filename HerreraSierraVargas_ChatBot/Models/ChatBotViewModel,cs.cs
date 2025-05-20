@@ -5,5 +5,7 @@
         public string Prompt { get; set; }
         public string GeminiResponse { get; set; }
         public string GroqResponse { get; set; }
+        public string SelectedBot { get; set; }
     }
 }
+

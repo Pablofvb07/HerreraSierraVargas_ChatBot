@@ -26,16 +26,20 @@ namespace SierraHerreraVargasChatBot.Controllers
         [HttpPost]
         public async Task<IActionResult> Index(ChatBotViewModel model)
         {
-            if (!string.IsNullOrWhiteSpace(model.Prompt))
+            if (!string.IsNullOrWhiteSpace(model.Prompt) && !string.IsNullOrWhiteSpace(model.SelectedBot))
             {
-                
-                model.GeminiResponse = await _geminiRepository.GetChatbotResponse(model.Prompt);
-
-                
-                model.GroqResponse = await _groqRepository.GetChatbotResponse(model.Prompt);
+                if (model.SelectedBot == "Gemini")
+                {
+                    model.GeminiResponse = await _geminiRepository.GetChatbotResponse(model.Prompt);
+                }
+                else if (model.SelectedBot == "Groq")
+                {
+                    model.GroqResponse = await _groqRepository.GetChatbotResponse(model.Prompt);
+                }
             }
 
             return View(model);
         }
+
     }
 }

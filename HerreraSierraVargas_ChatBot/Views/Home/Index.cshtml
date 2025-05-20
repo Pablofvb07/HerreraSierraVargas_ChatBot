@@ -1,8 +1,91 @@
-﻿@{
+﻿@model HerreraSierraVargas_ChatBot.Models.ChatBotViewModel
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Bienvenido al Selector de IA</h1>
+    <p>Selecciona la IA que desee y realice su pregunta.</p>
+
+    <!-- SECCIÓN DE TARJETAS DE MIEMBROS -->
+    <section class="container mb-4">
+        <h2 class="text-center fw-bold mb-4">Miembros del Proyecto</h2>
+        <div class="row justify-content-center g-4">
+            <div class="col-md-4 col-sm-6">
+                <div class="card profile-card shadow-sm">
+                    <img src="~/images/Foto Richie.jpg" class="card-img-top" alt="Miembro 1">
+                    <div class="card-body">
+                        <h5 class="card-title">Ricardo Herrera</h5>
+                        <p class="card-text"><strong>Correo:</strong> ricardo.herrera.acurio@udla.edu.ec</p>
+                        <p class="card-text"><strong>Intereses:</strong> IA, Desarrollo web, Base de Datos</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <div class="card profile-card shadow-sm">
+                    <img src="~/images/Foto Daniel.jpg" class="card-img-top" alt="Miembro 2">
+                    <div class="card-body">
+                        <h5 class="card-title">Daniel Sierra</h5>
+                        <p class="card-text"><strong>Correo:</strong> daniel.sierra@udla.edu.ec</p>
+                        <p class="card-text"><strong>Intereses:</strong> IA, Desarrollo web, Backend</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <div class="card profile-card shadow-sm">
+                    <img src="~/images/Foto Pablo.jpg" class="card-img-top" alt="Miembro 3">
+                    <div class="card-body">
+                        <h5 class="card-title">Pablo Vargas</h5>
+                        <p class="card-text"><strong>Correo:</strong> pablo.vargas.barriga@udla.edu.ec</p>
+                        <p class="card-text"><strong>Intereses:</strong> IA, Desarrollo web, Frontend</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 </div>
+
+@{
+    var selectedBot = Model?.SelectedBot;
+}
+
+<!-- FORMULARIO -->
+<div class="container mt-4">
+    <div class="card shadow p-4">
+        <form method="post" asp-controller="Home" asp-action="Index">
+            <div class="mb-3">
+                <label class="form-label">Selecciona una IA:</label>
+                <select name="SelectedBot" class="form-select" required>
+                    <option value="" selected disabled>-- Selecciona --</option>
+                    <option value="Gemini" selected="@(Model?.SelectedBot == "Gemini")">Gemini</option>
+                    <option value="Groq" selected="@(Model?.SelectedBot == "Groq")">Groq</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Escribe tu pregunta:</label>
+                <input type="text" name="Prompt" value="@Model?.Prompt" class="form-control" required />
+            </div>
+
+            <button type="submit" class="btn btn-primary">Enviar</button>
+        </form>
+
+        @if (Model != null && !string.IsNullOrWhiteSpace(Model.Prompt) && !string.IsNullOrWhiteSpace(selectedBot))
+        {
+            <div class="mt-4">
+                <h4>Tu pregunta:</h4>
+                <p class="text-secondary">@Model.Prompt</p>
+
+                <h4>Respuesta de @selectedBot:</h4>
+                <pre class="bg-light p-3 rounded">
+@(
+    selectedBot == "Gemini" ? Model.GeminiResponse :
+    selectedBot == "Groq" ? Model.GroqResponse : "IA no válida"
+)
+                </pre>
+            </div>
+        }
+    </div>
+</div>
+
