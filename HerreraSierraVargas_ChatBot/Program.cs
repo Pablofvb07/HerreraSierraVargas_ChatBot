@@ -1,5 +1,5 @@
 using HerreraSierraVargas_ChatBot.Interfaces;
-using SierraHerreraVargasChatBot.Repositories;
+using HerreraSierraVargas_ChatBot.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
