@@ -1,11 +1,11 @@
-﻿using HerreraSierraVargas_ChatBot.Interfaces;
-using Newtonsoft.Json;
-using System;
+﻿using Newtonsoft.Json;
+using HerreraSierraVargas_ChatBot.Interfaces;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using System;
 
-namespace SierraHerreraVargasChatBot.Repositories
+namespace HerreraSierraVargas_ChatBot.Repositories
 {
     public class GroqRepository : IChatBotService
     {
