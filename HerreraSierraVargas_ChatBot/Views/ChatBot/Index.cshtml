@@ -1,0 +1,29 @@
+﻿@model HerreraSierraVargas_ChatBot.Models.ChatBotViewModel
+
+@{
+    ViewData["Title"] = "ChatBot Dual";
+}
+
+<h2>Chat con Gemini y Groq</h2> 
+
+<form method="post" asp-controller="ChatBot" asp-action="Index">
+    <div>
+        <label>Escribe tu pregunta:</label>
+        <input type="text" name="Prompt" value="@Model?.Prompt" class="form-control" required />
+    </div>
+    <button type="submit" class="btn btn-primary mt-2">Enviar</button>
+</form>
+
+@if (Model != null && Model.Prompt != null)
+{
+    <div class="mt-4">
+        <h4>Prompt:</h4>
+        <p>@Model.Prompt</p>
+
+        <h4>Respuesta de Gemini:</h4>
+        <pre>@Model.GeminiResponse</pre>
+
+        <h4>Respuesta de Groq:</h4> 
+        <pre>@Model.GroqResponse</pre> 
+    </div>
+}

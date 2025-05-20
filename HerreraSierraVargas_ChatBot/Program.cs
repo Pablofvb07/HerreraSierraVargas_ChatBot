@@ -1,4 +1,9 @@
+using HerreraSierraVargas_ChatBot.Interfaces;
+using HerreraSierraVargas_ChatBot.Repositories;
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddScoped<IChatBotService, GroqRepository>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
