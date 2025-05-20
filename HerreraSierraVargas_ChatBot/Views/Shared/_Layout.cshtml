@@ -1,49 +1,92 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - HerreraSierraVargas_ChatBot</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/HerreraSierraVargas_ChatBot.styles.css" asp-append-version="true" />
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>@ViewData["Title"] - HerreraSierraVargasBOT</title>
+	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+	<link rel="stylesheet" href="~/HerreraSierraVargas_ChatBot.styles.css" asp-append-version="true" />
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">HerreraSierraVargas_ChatBot</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+	<!-- NAVBAR -->
+	<header class="main-header mb-4">
+		<nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
+			<div class="container-fluid">
+				<a class="navbar-brand fw-bold" asp-area="" asp-controller="Home" asp-action="Index">HerreraSierraVargasBOT</a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarNav">
+					<ul class="navbar-nav ms-auto">
+						<li class="nav-item">
+							<a class="nav-link active" asp-controller="Home" asp-action="Index">Inicio</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" asp-controller="Home" asp-action="Privacy">Privacidad</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</header>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2025 - HerreraSierraVargas_ChatBot - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
+	<!-- SECCIÓN DE TARJETAS DE MIEMBROS -->
+	<section class="container mb-4">
+		<h2 class="text-center fw-bold mb-4">Miembros del Proyecto</h2>
+		<div class="row justify-content-center g-4">
+			<!-- Tarjeta 1 -->
+			<div class="col-md-4 col-sm-6">
+				<div class="card profile-card shadow-sm">
+					<img src="~/images/Foto Richie.jpg" class="card-img-top" alt="Miembro 1">
+					<div class="card-body">
+						<h5 class="card-title">Ricardo Herrera</h5>
+						<p class="card-text"><strong>Correo:</strong> ricardo.herrera.acurio@udla.edu.ec</p>
+						<p class="card-text"><strong>Intereses:</strong> IA,Desarrollo web, Base de Datos</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4 col-sm-6">
+				<div class="card profile-card shadow-sm">
+					<img src="~/images/Foto Daniel.jpg" class="card-img-top" alt="Miembro 2">
+					<div class="card-body">
+						<h5 class="card-title">Daniel Sierra</h5>
+						<p class="card-text"><strong>Correo:</strong> daniel.sierra@udla.edu.ec</p>
+						<p class="card-text"><strong>Intereses:</strong> IA, Desarrollo web, Backend</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4 col-sm-6">
+				<div class="card profile-card shadow-sm">
+					<img src="~/images/Foto Pablo.jpg" class="card-img-top" alt="Miembro 3">
+					<div class="card-body">
+						<h5 class="card-title">Pablo Vargas</h5>
+						<p class="card-text"><strong>Correo:</strong> pablo.vargas.barriga@udla.edu.ec</p>
+						<p class="card-text"><strong>Intereses:</strong> IA, desarrollo web, Frontend</p>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</section>
+
+	<!-- CUERPO PRINCIPAL -->
+	<div class="container">
+		<main role="main" class="pb-3">
+			@RenderBody()
+		</main>
+	</div>
+
+	<!-- PIE DE PÁGINA PERSONALIZADO -->
+	<footer class="border-top footer text-white mt-4 py-3" style="background-color: #0d6efd;">
+		<div class="container text-center">
+			&copy; 2025 - HerreraSierraVargasBOT - <a class="text-white" asp-area="" asp-controller="Home" asp-action="Privacy">Privacidad</a>
+		</div>
+	</footer>
+
+	<script src="~/lib/jquery/dist/jquery.min.js"></script>
+	<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="~/js/site.js" asp-append-version="true"></script>
+	@await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
