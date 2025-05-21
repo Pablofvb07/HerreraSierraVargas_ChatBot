@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
 using System.IO;
+using HerreraSierraVargas_ChatBot.Data;
 
 public class ChatDbContextFactory : IDesignTimeDbContextFactory<ChatDbContext>
 {

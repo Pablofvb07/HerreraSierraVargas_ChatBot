@@ -1,0 +1,25 @@
+﻿@model IEnumerable<HerreraSierraVargas_ChatBot.Models.ChatHistorial>
+
+<h2>Historial de Conversaciones</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Fecha</th>
+            <th>IA</th>
+            <th>Pregunta</th>
+            <th>Respuesta</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Timestamp.ToString("g")</td>
+                <td>@item.BotName</td>
+                <td>@item.Prompt</td>
+                <td>@item.Response</td>
+            </tr>
+        }
+    </tbody>
+</table>

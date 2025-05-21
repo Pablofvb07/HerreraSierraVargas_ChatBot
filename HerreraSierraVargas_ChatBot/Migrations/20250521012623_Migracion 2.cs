@@ -6,13 +6,13 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace HerreraSierraVargas_ChatBot.Migrations
 {
     /// <inheritdoc />
-    public partial class MigracionInicial : Migration
+    public partial class Migracion2 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "ChatLogs",
+                name: "ChatHistorial",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -23,7 +23,7 @@ namespace HerreraSierraVargas_ChatBot.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ChatLogs", x => x.Id);
+                    table.PrimaryKey("PK_ChatHistorial", x => x.Id);
                 });
         }
 
@@ -31,7 +31,7 @@ namespace HerreraSierraVargas_ChatBot.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "ChatLogs");
+                name: "ChatHistorial");
         }
     }
 }

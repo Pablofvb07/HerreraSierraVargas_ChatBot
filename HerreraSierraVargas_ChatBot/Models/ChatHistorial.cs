@@ -9,5 +9,6 @@ namespace HerreraSierraVargas_ChatBot.Models
         public string Prompt { get; set; }
         public string Response { get; set; }
         public DateTime Timestamp { get; set; } = DateTime.Now;
+        public string BotName { get; set; }
     }
 }

@@ -4,6 +4,7 @@ using HerreraSierraVargas_ChatBot.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using SierraHerreraVargasChatBot.Repositories;
+using HerreraSierraVargas_ChatBot.Data;
 
 namespace HerreraSierraVargas_ChatBot.Controllers
 {
@@ -13,11 +14,11 @@ namespace HerreraSierraVargas_ChatBot.Controllers
         private readonly GeminiRepository _geminiRepository;
         private readonly GroqRepository _groqRepository;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, ChatDbContext context)
         {
             _logger = logger;
-            _geminiRepository = new GeminiRepository();
-            _groqRepository = new GroqRepository();
+            _geminiRepository = new GeminiRepository(context);
+            _groqRepository = new GroqRepository(context);
         }
 
         [HttpGet]
@@ -34,10 +35,12 @@ namespace HerreraSierraVargas_ChatBot.Controllers
                 if (model.SelectedBot == "Gemini")
                 {
                     model.GeminiResponse = await _geminiRepository.GetChatbotResponse(model.Prompt);
+                    await _geminiRepository.SaveResponseInDatabase(model.Prompt, model.GeminiResponse);
                 }
                 else if (model.SelectedBot == "Groq")
                 {
                     model.GroqResponse = await _groqRepository.GetChatbotResponse(model.Prompt);
+                    await _groqRepository.SaveResponseInDatabase(model.Prompt, model.GroqResponse);
                 }
             }
 
