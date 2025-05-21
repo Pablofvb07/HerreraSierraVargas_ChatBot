@@ -1,6 +1,7 @@
 ﻿using HerreraSierraVargas_ChatBot.Interfaces;
 using HerreraSierraVargas_ChatBot.Models;
 using Newtonsoft.Json;
+using HerreraSierraVargas_ChatBot.Data;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -16,6 +17,7 @@ namespace SierraHerreraVargasChatBot.Repositories
         public GeminiRepository()
         {
             _httpClient = new HttpClient();
+            _context = context;
         }
 
         public async Task<string> GetChatbotResponse(string prompt)
